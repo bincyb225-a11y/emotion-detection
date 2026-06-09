@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Emotion Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylev.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Emotion Detector</h2>
+        <p class="subtitle">Upload a face to detect the mood</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="file-input-wrapper">
+                <input type="file" name="image" id="file" required>
+            </div>
+            <button type="submit">Analyze Emotion</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result-card">
+                <hr>
+                <p>Analysis Result:</p>
+                <h3 class="emotion-text">{{ prediction }}</h3>
+                <div class="image-preview">
+                    <img src="{{ image_path }}" alt="Uploaded Image">
+                </div>
+                <a href="/" class="reset-btn">Try Another</a>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
